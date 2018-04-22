@@ -5,17 +5,17 @@
 //select size input
 //when size is submitted by the user, call makegrid()
 
-const canvas = document.getElementbyID('pixelCanvas');
-const submitSize = document.getElementbyID('sizePicked');
-const color = document.getElementbyID('colorPicker').value;
+const canvas = document.querySelector('#pixelCanvas');
+const submitSize = document.querySelector('#sizePicked');
+const color = document.querySelector('#colorPicker').value;
 
 
 
 function makeGrid(height, Width){
   for(let i = 0 ; i < height ; i++) {
-    let row = document.createElement('tr');
+    const row = document.createElement('tr');
     for(let j = 0 ; j < width ; j++) {
-      let cell = document.createElement('td');
+      const cell = document.createElement('td');
       row.appendChild(cell);
     }
     canvas.appendChild(row);
@@ -24,7 +24,7 @@ function makeGrid(height, Width){
 
 submitSize.addEventListener('submit', function(){
   event.preventDefault();
-  const height = document.getElementbyID('inputHeight').value;
-  const width = document.getElementbyID('inputWidth').value;
+  const height = document.querySelector('#inputHeight').value;
+  const width = document.querySelector('#inputWidth').value;
   makeGrid(height, Width);
 });
