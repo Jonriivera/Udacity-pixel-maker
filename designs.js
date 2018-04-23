@@ -6,25 +6,26 @@
 //when size is submitted by the user, call makegrid()
 
 const canvas = document.querySelector('#pixelCanvas');
-const submitSize = document.querySelector('#sizePicked');
-const color = document.querySelector('#colorPicker').value;
+const submitSize = document.querySelector('#sizePicker');
 
-
-
-function makeGrid(height, Width){
-  for(let i = 0 ; i < height ; i++) {
-    const row = document.createElement('tr');
-    for(let j = 0 ; j < width ; j++) {
-      const cell = document.createElement('td');
-      row.appendChild(cell);
-    }
-    canvas.appendChild(row);
-  }
-}
-
-submitSize.addEventListener('submit', function(){
+submitSize.addEventListener('submit', function() {
   event.preventDefault();
   const height = document.querySelector('#inputHeight').value;
   const width = document.querySelector('#inputWidth').value;
-  makeGrid(height, Width);
+  makeGrid(height, width);
 });
+
+function makeGrid(rows, cells){
+  for(let i = 0 ; i < rows ; i++) {
+    const newRow = document.createElement('tr');
+    for(let j = 0 ; j < cells ; j++) {
+      const newCell = document.createElement('td');
+      newRow.appendChild(newCell);
+      newCell.addEventListener('click', function() {
+      const color = document.querySelector('#colorPicker').value;
+      newCell.style.background = color;
+      });
+    }
+    canvas.appendChild(newRow);
+  }
+}
